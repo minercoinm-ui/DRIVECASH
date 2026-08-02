@@ -7,7 +7,11 @@ import { GoogleGenAI } from "@google/genai";
 dotenv.config();
 
 const app = express();
+<<<<<<< HEAD
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+=======
+const PORT = 3000;
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 
 app.use(express.json());
 
@@ -56,6 +60,7 @@ Dúvida: ${message}`;
   }
 });
 
+<<<<<<< HEAD
 // Server-side Geocoding & Reverse Geocoding Proxy (bypasses browser CORS / User-Agent blocking)
 app.get("/api/geocode", async (req, res) => {
   try {
@@ -197,13 +202,18 @@ app.get("/api/reverse-geocode", async (req, res) => {
   }
 });
 
+=======
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 // Multi-device sync in-memory store
 const serverSyncStore = {
   users: [] as any[],
   drivers: [] as any[],
   passengers: [] as any[],
   rides: [] as any[],
+<<<<<<< HEAD
   chatMessages: [] as any[],
+=======
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 };
 
 // Real-time multi-device state polling / sync routes
@@ -213,7 +223,10 @@ app.get("/api/sync/state", (req, res) => {
     drivers: serverSyncStore.drivers,
     passengers: serverSyncStore.passengers,
     rides: serverSyncStore.rides,
+<<<<<<< HEAD
     chatMessages: serverSyncStore.chatMessages,
+=======
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
   });
 });
 
@@ -289,8 +302,13 @@ app.post("/api/sync/driver-status", (req, res) => {
       user_id: userId,
       status: status || "online",
       approval_status: approvalStatus || "approved",
+<<<<<<< HEAD
       lat: undefined,
       lng: undefined
+=======
+      lat: -23.5615,
+      lng: -46.6560
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
     };
     serverSyncStore.drivers.push(drv);
   }
@@ -311,6 +329,7 @@ app.post("/api/sync/ride", (req, res) => {
   res.json({ success: true, rides: serverSyncStore.rides });
 });
 
+<<<<<<< HEAD
 app.post("/api/sync/chat-message", (req, res) => {
   const { message } = req.body;
   if (message) {
@@ -325,6 +344,8 @@ app.post("/api/sync/chat-message", (req, res) => {
   res.json({ success: true, chatMessages: serverSyncStore.chatMessages });
 });
 
+=======
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 // Mercado Pago simulated checkout route
 app.post("/api/mercado-pago/checkout", (req, res) => {
   const { planType, amount, driverId } = req.body;

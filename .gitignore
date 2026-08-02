@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 .pnpm-store/
@@ -24,3 +25,13 @@ build/
 .DS_Store
 Thumbs.db
 .cache/
+=======
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+>>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
