@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Uber/99 Driver Radar Pulse & Marker Animations */
+@keyframes driver-radar-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes car-subtle-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  }
+}
+
+@keyframes status-glow-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes map-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+}
+
+.animate-map-pulse {
+  animation: map-pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Radar Rings on Map Marker */
+.driver-radar-ring-1 {
+  animation: driver-radar-pulse 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.driver-radar-ring-2 {
+  animation: driver-radar-pulse 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s infinite;
+}
+.driver-radar-ring-3 {
+  animation: driver-radar-pulse 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) 1.6s infinite;
+}
+
+.driver-car-pulsing {
+  animation: car-subtle-pulse 1.8s ease-in-out infinite;
+}
+
+.status-dot-glowing {
+  animation: status-glow-dot 2s ease-in-out infinite;
+}
+
+/* Smooth marker position transition */
+.leaflet-marker-icon {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* 3D Tilt perspective simulation for Uber/99 navigation style */
+.map-perspective-container {
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.map-perspective-3d .leaflet-map-pane {
+  transform: rotateX(25deg) translateY(-25px) scale(1.08);
+  transform-origin: 50% 80%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-perspective-flat .leaflet-map-pane {
+  transform: rotateX(0deg) translateY(0px) scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
