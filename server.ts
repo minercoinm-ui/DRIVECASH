@@ -7,11 +7,7 @@ import { GoogleGenAI } from "@google/genai";
 dotenv.config();
 
 const app = express();
-<<<<<<< HEAD
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-=======
-const PORT = 3000;
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 
 app.use(express.json());
 
@@ -19,7 +15,7 @@ app.use(express.json());
 app.post("/api/ai-support", async (req, res) => {
   try {
     const { message, userRole, contextData } = req.body;
-    
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return res.status(200).json({
@@ -28,7 +24,7 @@ app.post("/api/ai-support", async (req, res) => {
     }
 
     const ai = new GoogleGenAI({ apiKey });
-    
+
     const systemPrompt = `Você é o Assistente Virtual IA da plataforma DriveCash (Mobilidade Urbana com Recompensas).
 Seu tom é amigável, ágil, profissional e focado em resolver dúvidas em Português do Brasil.
 O usuário é um ${userRole === "driver" ? "MOTORISTA" : userRole === "admin" ? "ADMINISTRADOR" : "PASSAGEIRO"}.
@@ -60,7 +56,6 @@ Dúvida: ${message}`;
   }
 });
 
-<<<<<<< HEAD
 // Server-side Geocoding & Reverse Geocoding Proxy (bypasses browser CORS / User-Agent blocking)
 app.get("/api/geocode", async (req, res) => {
   try {
@@ -202,18 +197,13 @@ app.get("/api/reverse-geocode", async (req, res) => {
   }
 });
 
-=======
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 // Multi-device sync in-memory store
 const serverSyncStore = {
   users: [] as any[],
   drivers: [] as any[],
   passengers: [] as any[],
   rides: [] as any[],
-<<<<<<< HEAD
   chatMessages: [] as any[],
-=======
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 };
 
 // Real-time multi-device state polling / sync routes
@@ -223,10 +213,7 @@ app.get("/api/sync/state", (req, res) => {
     drivers: serverSyncStore.drivers,
     passengers: serverSyncStore.passengers,
     rides: serverSyncStore.rides,
-<<<<<<< HEAD
     chatMessages: serverSyncStore.chatMessages,
-=======
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
   });
 });
 
@@ -302,13 +289,8 @@ app.post("/api/sync/driver-status", (req, res) => {
       user_id: userId,
       status: status || "online",
       approval_status: approvalStatus || "approved",
-<<<<<<< HEAD
       lat: undefined,
       lng: undefined
-=======
-      lat: -23.5615,
-      lng: -46.6560
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
     };
     serverSyncStore.drivers.push(drv);
   }
@@ -329,7 +311,6 @@ app.post("/api/sync/ride", (req, res) => {
   res.json({ success: true, rides: serverSyncStore.rides });
 });
 
-<<<<<<< HEAD
 app.post("/api/sync/chat-message", (req, res) => {
   const { message } = req.body;
   if (message) {
@@ -344,14 +325,12 @@ app.post("/api/sync/chat-message", (req, res) => {
   res.json({ success: true, chatMessages: serverSyncStore.chatMessages });
 });
 
-=======
->>>>>>> c5f7cbeb6264456d5402a77f78955bb7f1c6d6d5
 // Mercado Pago simulated checkout route
 app.post("/api/mercado-pago/checkout", (req, res) => {
   const { planType, amount, driverId } = req.body;
   const paymentId = "MP-" + Math.floor(100000 + Math.random() * 900000);
   const pixQrCode = `00020101021226880014br.gov.bcb.pix2566pix.mercadopago.com/qr/v2/${paymentId}5204000053039865405${amount}.005802BR5915DriveCash Brasil6009SAO PAULO62070503***6304E2A1`;
-  
+
   res.json({
     success: true,
     paymentId,
