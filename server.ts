@@ -357,6 +357,9 @@ async function startServer() {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
+  app.get("/teste", (req, res) => {
+  res.send("DriveCash servidor funcionando!");
+});
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`DriveCash Server running on http://0.0.0.0:${PORT}`);
