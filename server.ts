@@ -357,7 +357,9 @@ async function startServer() {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
-  app.get("/teste", (req, res) => {
+  app.get("/", (req, res) => {
+  res.send("DriveCash Online");
+});
   res.send("DriveCash servidor funcionando!");
 });
 
